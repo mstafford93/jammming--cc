@@ -60,17 +60,26 @@ function App () {
     setPlaylistName(name);
   }
 
+  function savePlaylist() {
+    const trackURIs = playlistTracks.map((t) => t.uri);
+  };
+
+  function search(term){
+    console.log(term);
+  }
+  
+
     return (
         <div>
         <h1>
           Ja<span className={styles.highlight}>mmm</span>ing
         </h1>
         <div className={styles.App}>
-          <SearchBar />
+          <SearchBar onSearch={search}/>
           
           <div className={styles.AppPlaylist}>
             <SearchResults userSearchResults={searchResults} onAdd={addTrack}/>
-            <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrack}/>
+            <Playlist playlistName={playlistName} playlistTracks={playlistTracks} onRemove={removeTrack} onSave={savePlaylist}/>
           </div>
         </div>
       </div>
