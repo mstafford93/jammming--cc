@@ -5,9 +5,41 @@ import SearchBar from "../SearchBar/SearchBar";
 import Playlist from "../Playlist/Playlist";
 
 function App () {
-  const [searchResults, setSearchResults] = useState(['Example Search Results']);
+  const [searchResults, setSearchResults] = useState([
+    {
+      name: "Example Track 1",
+      artist: "Example  Artist 1",
+      album: "Example Album 1",
+      id: 1,
+    },
+    {
+      name: "Example Track 2",
+      artist: "Example Artist 2",
+      album: "Example Album 2",
+      id: 2,
+    },
+  ]);
   const [playlistName, setPlaylistName] = useState("Example Playlist Name");
-  const [playlistTracks, setPlaylistTracks] = useState(['Example Playlist Tracks']);
+  const [playlistTracks, setPlaylistTracks] = useState([
+    {
+      name: "Example Playlist Name 1",
+      artist: "Example Playlist Artist 1",
+      album: "Example Playlist Album 1",
+      id: 34,
+    },
+    {
+      name: "Example Playlist Name 2",
+      artist: "Example Playlist Artist 2",
+      album: "Example Playlist Album 2",
+      id: 57,
+    },
+    {
+      name: "Example Playlist Name 3",
+      artist: "Example Playlist Artist 3",
+      album: "Example Playlist Album 3",
+      id: 3,
+    },
+  ]);
 
   function addTrack(track) {
     const existingTrack = playlistTracks.find((t) => t.id === track.id);
@@ -27,7 +59,7 @@ function App () {
           <SearchBar />
           
           <div className={styles.AppPlaylist}>
-            <SearchResults userSearchResults={searchResults} />
+            <SearchResults userSearchResults={searchResults} onAdd={addTrack}/>
             <Playlist playlistName={playlistName} playlistTracks={playlistTracks}/>
           </div>
         </div>

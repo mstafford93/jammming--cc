@@ -3,6 +3,15 @@ import styles from './Track.module.css';
 
 function Track (props) {
     function renderAction() {
+      
+      function passTrack() {
+        props.onAdd(props.track);
+      }
+    
+      function passTrackToRemove() {
+        props.onRemove(props.track);
+      }
+
         if (props.isRemoval) {
           return (
             <button className="Track-action">
@@ -24,7 +33,7 @@ function Track (props) {
           
           <p>{props.track.artist} | {props.track.album}</p>
         </div>
-        {/* <button class="Track-action"><!-- + or - will go here --></button> */}
+        {renderAction()}
       </div>
     );
 }
